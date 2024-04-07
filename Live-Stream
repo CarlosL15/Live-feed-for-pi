@@ -7,7 +7,7 @@ app = Flask(__name__)
 def generate_frames():
     with picamera.PiCamera() as camera:
         camera.resolution = (640, 488)
-        camera.framerate = 24
+        camera.framerate = 60
         stream = io.BytesIO()
 
         for _ in camera.capture_continuous(stream, 'jpeg', use_video_port=True):
@@ -22,5 +22,7 @@ def video_feed():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, threaded=True)
+
+
 
 
